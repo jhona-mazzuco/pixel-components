@@ -1,0 +1,707 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [
+        {
+            "name": "PixelInputDirective",
+            "id": "directive-PixelInputDirective-6527a2dae5ff1c6ae33c785f5c340f175ab0ab320542272dad31f67f8936c6b4492e811f39208d6a01b7b9749e4d352e5366df5d8f7e5f3a68b96c8a83a8a20f",
+            "file": "projects/pixel/src/lib/input/input.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, ElementRef, HostBinding, OnInit, Renderer2 } from '@angular/core';\n\n@Directive({\n  selector: '[pxInput]',\n})\nexport class PixelInputDirective implements OnInit {\n  constructor(private ref: ElementRef, private renderer: Renderer2) {\n  }\n\n  ngOnInit(): void {\n    this.applyClassname();\n    this.verifyType();\n  }\n\n  applyClassname(): void {\n    this.renderer.addClass(this.ref.nativeElement, 'px-form-field__input');\n  }\n\n  verifyType(): void {\n    const type = this.ref.nativeElement.type;\n    if (type === 'number') {\n      const parent = this.renderer.parentNode(this.ref.nativeElement);\n      this.renderer.addClass(parent, 'px-form-field__input--number');\n      const decrease = this.createSymbolElement('-');\n      this.renderer.insertBefore(parent, decrease, this.ref.nativeElement);\n      const plus = this.createSymbolElement('+');\n      this.renderer.appendChild(parent, plus);\n      decrease.onclick = () => this.ref.nativeElement.stepDown();\n      plus.onclick = () => this.ref.nativeElement.stepUp();\n    }\n  }\n\n  createSymbolElement(content: '+' | '-'): HTMLButtonElement {\n    const btn = this.renderer.createElement('button');\n    this.renderer.addClass(btn, 'px-form-field__symbol');\n    const symbol = this.renderer.createText(content);\n    this.renderer.appendChild(btn, symbol);\n    return btn;\n  }\n}\n",
+            "selector": "[pxInput]",
+            "providers": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "applyClassname",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "createSymbolElement",
+                    "args": [
+                        {
+                            "name": "content",
+                            "type": "\"+\" | \"-\"",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "HTMLButtonElement",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "content",
+                            "type": "\"+\" | \"-\"",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "verifyType",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "implements": [
+                "OnInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "ref",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 6,
+                "jsdoctags": [
+                    {
+                        "name": "ref",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "renderer",
+                        "type": "Renderer2",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-3ea91cfada31617196cc892968d07db2e9ef5d80ce51943ee4846a25a8229f59e6159e71fe3f866b3298604b2773e5c64168f180c31711c029c79b2f98976630",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'pixel-components'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'pixel-components';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".test {\r\n  color: red;\r\n}\r\n",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<h1>Input</h1>\n\n<h5>Text</h5>\n<px-form-field>\n  <input pxInput/>\n</px-form-field>\n\n<h5>Number</h5>\n<div style=\"width: 100px\">\n  <px-form-field>\n    <input type=\"number\" pxInput/>\n  </px-form-field>\n</div>\n"
+        },
+        {
+            "name": "PixelFormFieldComponent",
+            "id": "component-PixelFormFieldComponent-7712da5ae554a2f6e7d802dc948778220ce6fddffd41e671b036ec546937c59001d3f18035c9aaef2ef0c4e99720dce491d880364033fd4bf8a357ada4d58602",
+            "file": "projects/pixel/src/lib/form-field/form-field.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "px-form-field",
+            "styleUrls": [
+                "./form-field.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-field.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'px-form-field',\n  templateUrl: './form-field.component.html',\n  styleUrls: ['./form-field.component.scss']\n})\nexport class PixelFormFieldComponent {\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".px-form-field {\r\n  height: 50px;\r\n\r\n  &__wrapper {\r\n    width: 100%;\r\n    display: inline-flex;\r\n    height: 100%;\r\n\r\n    @mixin borders {\r\n      content: '';\r\n      padding-top: 2px;\r\n      display: block;\r\n      height: 42px;\r\n      width: 3px;\r\n      background: #000;\r\n      position: relative;\r\n      top: 3px;\r\n    }\r\n\r\n    &::before, &::after {\r\n      @include borders;\r\n    }\r\n  }\r\n\r\n  &__container {\r\n    width: 100%;\r\n    border-top: 3px solid #000;\r\n    border-bottom: 3px solid #000;\r\n  }\r\n\r\n  ::ng-deep {\r\n    .px-form-field {\r\n      &__input {\r\n        width: calc(100% - 3px);\r\n        border: 0;\r\n        height: 40px;\r\n        position: relative;\r\n        top: 1px;\r\n        outline: none;\r\n\r\n        &[type=\"number\"] {\r\n          -webkit-appearance: textfield;\r\n          -moz-appearance: textfield;\r\n          appearance: textfield;\r\n          width: calc(100% - 80px);\r\n        }\r\n\r\n        &[type=number]::-webkit-inner-spin-button,\r\n        &[type=number]::-webkit-outer-spin-button {\r\n          -webkit-appearance: none;\r\n        }\r\n      }\r\n\r\n      &__symbol {\r\n        width: 30px;\r\n        height: 41px;\r\n        text-align: center;\r\n        vertical-align: middle;\r\n        background: transparent;\r\n        outline: none;\r\n        border: 0;\r\n        font-weight: bold;\r\n        font-size: 30px;\r\n        cursor: pointer;\r\n        margin: 0 4px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n\r\n",
+                    "styleUrl": "./form-field.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"px-form-field\">\n  <div class=\"px-form-field__wrapper\">\n    <div class=\"px-form-field__container\">\n      <ng-content select=\"[pxInput]\"></ng-content>\n    </div>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "SelectComponent",
+            "id": "component-SelectComponent-17116a71439fafd99f70d8d576a954b07b67a42c57093d8d5b07e9f10d26cc9a74d11852afd6528fb35296e9ca79e40bb06178baa190aa4e2c383735db37c238",
+            "file": "projects/pixel/src/lib/select/select.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "px-select",
+            "styleUrls": [
+                "./select.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./select.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'px-select',\n  templateUrl: './select.component.html',\n  styleUrls: ['./select.component.scss']\n})\nexport class SelectComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./select.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"px-form-field__select\">\n\n</div>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "id": "module-AppModule-fb68f350362a207a1e3303524c7558df5d98cb018447984a02977ab04615095881c586eec84fc59cf8addc86eab1b02a5b44a59541cb40aa8035bc6d8d2aae4a",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { PixelFormFieldModule } from \"../../projects/pixel/src/lib/form-field/form-field.module\";\nimport { PixelInputModule } from \"../../projects/pixel/src/lib/input/input.module\";\n\nimport { AppComponent } from './app.component';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    PixelFormFieldModule,\n    PixelInputModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "PixelFormFieldModule"
+                        },
+                        {
+                            "name": "PixelInputModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "PixelFormFieldModule",
+            "id": "module-PixelFormFieldModule-b478d5820eadda1abe63e45d1ecc4aa1bee1210801db558a856c9139afcae9fc9bcfc435df7c649ab8d17999cf5823322357b3cdc44074e5b898d7f4db42c749",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/pixel/src/lib/form-field/form-field.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { PixelFormFieldComponent } from './form-field.component';\n\n\n@NgModule({\n  declarations: [PixelFormFieldComponent],\n  imports: [\n    CommonModule\n  ],\n  exports: [PixelFormFieldComponent]\n})\nexport class PixelFormFieldModule {\n}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "PixelFormFieldComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "PixelFormFieldComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "PixelInputModule",
+            "id": "module-PixelInputModule-487c3e4ab90162cd1e828bcedd35cf749cdc4cdd1c912db09e31d5148b1d8830ffec9515ba2cbe8bab141c5a4098d9e7e6909033e1c4d69ba522e1d1a78042d8",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/pixel/src/lib/input/input.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { PixelInputDirective } from './input.directive';\n\n\n@NgModule({\n  declarations: [PixelInputDirective],\n  exports: [PixelInputDirective],\n})\nexport class PixelInputModule {\n}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "PixelInputDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "PixelInputDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SelectModule",
+            "id": "module-SelectModule-de620e9aa2fe13b1d3eadd24e5708fe70cb31cbd71125b21d7d6b00f1797c7d6d951272c8349bffd35ba2d3697d8049aeebc949d116f7e307c30c0a6a6be01c7",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/pixel/src/lib/select/select.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { SelectComponent } from './select.component';\n\n\n\n@NgModule({\n  declarations: [\n    SelectComponent\n  ],\n  imports: [\n    CommonModule\n  ]\n})\nexport class SelectModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SelectComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/pixel/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/pixel/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "projects/pixel/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/pixel/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/pixel/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/pixel/src/lib/form-field/form-field.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PixelFormFieldComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/pixel/src/lib/input/input.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "PixelInputDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/pixel/src/lib/select/select.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SelectComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/pixel/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/pixel/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
